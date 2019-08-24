@@ -11,7 +11,7 @@ class UrlsController < ApplicationController
     if url.save
       render json: { shortcode: url.shortcode }, status: :created
     else
-      render json: { errors: {} }, status: :unprocessable_entity
+      render json: { errors: url.errors.to_h }, status: :unprocessable_entity
     end
   end
 
