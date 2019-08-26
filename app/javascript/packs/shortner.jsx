@@ -7,16 +7,19 @@ const Errors = ({errors}) => {
   if (!!Object.keys(errors).length) {
     const error_elements = errors.url.map(error => <li key={error}>{error}</li>)
 
-    return (
-      <div>
-        <ul>{error_elements}</ul>
-      </div>
-    )
+    return (<div> <ul>{error_elements}</ul></div>)
   } else {
     return null
   }
 }
+
+const Form = ({onSubmit, url, onChange, errors}) => {
   return (
+    <form onSubmit={onSubmit}>
+      <input value={url} placeholder="https://foo.example.com" onChange={onChange} />
+      <button>Shorten Me!</button>
+      <Errors errors={errors} />
+    </form>
   )
 }
 
@@ -31,8 +34,9 @@ class Shortner extends React.Component {
 
     axios.post('/urls', { url: url })
       .then(response => {
-        const { shortcode } = response
-        this.setState({ shortcode })
+        console.log(response)
+        const { shortcode } = response.data
+        this.setState({ shortcode: shortcode, errors: {} })
       })
       .catch(error => {
         const errors = error.response.data.errors
@@ -53,15 +57,33 @@ class Shortner extends React.Component {
     return !!Object.keys(this.state.errors).length
   }
 
+  mainComponent() {
+    if(!!this.state.shortcode) {
+      const short_url = `http://localhost:3000/${this.state.shortcode}`
+      return (
+        <div>
+          <h2>Your short URL is:</h2>
+          <p>
+            <a href={ short_url } target="_blank">{ short_url }</a>
+          </p>
+        </div>
+      )
+    } else {
+      return (
+        <Form
+          onSubmit={(event) => this.formSubmitted(event)}
+          url={this.state.url}
+          onChange={(event) => this.inputChanged(event)}
+          errors={this.state.errors} />
+      )
+    }
+  }
+
   render() {
     return (
       <div>
         <h1>Genius URL Shortener</h1>
-        <form onSubmit={(event) => this.formSubmitted(event)}>
-          <input value={this.state.url} placeholder="https://foo.example.com" onChange={(event) => this.inputChanged(event)} />
-          <button>Shorten Me!</button>
-          <Errors errors={this.state.errors} />
-        </form>
+        {this.mainComponent()}
       </div>
     )
   }
