@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  resources :urls, only: [:new, :create]
+  resources :urls, only: [:create]
+  get '*shortcode' => 'redirects#show'
+  root to: 'urls#new'
 end
