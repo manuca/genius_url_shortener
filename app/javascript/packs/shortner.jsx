@@ -4,11 +4,19 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 
 const Errors = ({errors}) => {
-  const error_elements = errors.url.map(error => <li key={error}>{error}</li>)
+  if (!!Object.keys(errors).length) {
+    const error_elements = errors.url.map(error => <li key={error}>{error}</li>)
+
+    return (
+      <div>
+        <ul>{error_elements}</ul>
+      </div>
+    )
+  } else {
+    return null
+  }
+}
   return (
-    <div>
-      <ul>{error_elements}</ul>
-    </div>
   )
 }
 
@@ -50,9 +58,9 @@ class Shortner extends React.Component {
       <div>
         <h1>Genius URL Shortener</h1>
         <form onSubmit={(event) => this.formSubmitted(event)}>
-          {this.hasErrors() && <Errors errors={this.state.errors} />}
-          <input value={this.state.url} onChange={(event) => this.inputChanged(event)} />
+          <input value={this.state.url} placeholder="https://foo.example.com" onChange={(event) => this.inputChanged(event)} />
           <button>Shorten Me!</button>
+          <Errors errors={this.state.errors} />
         </form>
       </div>
     )
