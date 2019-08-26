@@ -25,6 +25,11 @@ class Shortner extends React.Component {
       })
   }
 
+  formSubmitted(event) {
+    event.preventDefault()
+    this.postUrl()
+  }
+
   inputChanged(event) {
     this.setState({url: event.target.value})
   }
@@ -35,11 +40,11 @@ class Shortner extends React.Component {
 
   render() {
     return (
-      <div>
+      <form onSubmit={(event) => this.formSubmitted(event)}>
         {this.hasErrors() && <Errors errors={this.state.errors} />}
         <input value={this.state.url} onChange={(event) => this.inputChanged(event)} />
-        <button onClick={() => this.postUrl()}>Shorten Me!</button>
-      </div>
+        <button>Shorten Me!</button>
+      </form>
     )
   }
 }
