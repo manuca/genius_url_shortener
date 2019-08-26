@@ -1,5 +1,10 @@
 # README
 
+## Pending stuff
+
+[ ] Apply styles
+[ ] Count redirection events through a Visit model
+
 ## What went well?
 
 ## What didn't go well?
@@ -13,3 +18,4 @@ since this is my first project on Rails 6.
   * Put stats inside an authenticated environment
   * Use smarter input handling so that user specifies http or
     https only if he wants to be specific
+  * Do some benchmarks to measure performance
