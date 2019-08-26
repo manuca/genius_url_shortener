@@ -5,7 +5,11 @@ import axios from 'axios'
 
 const Errors = ({errors}) => {
   const error_elements = errors.url.map(error => <li key={error}>{error}</li>)
-  return <ul>{error_elements}</ul>
+  return (
+    <div>
+      <ul>{error_elements}</ul>
+    </div>
+  )
 }
 
 class Shortner extends React.Component {
@@ -43,11 +47,14 @@ class Shortner extends React.Component {
 
   render() {
     return (
-      <form onSubmit={(event) => this.formSubmitted(event)}>
-        {this.hasErrors() && <Errors errors={this.state.errors} />}
-        <input value={this.state.url} onChange={(event) => this.inputChanged(event)} />
-        <button>Shorten Me!</button>
-      </form>
+      <div>
+        <h1>Genius URL Shortener</h1>
+        <form onSubmit={(event) => this.formSubmitted(event)}>
+          {this.hasErrors() && <Errors errors={this.state.errors} />}
+          <input value={this.state.url} onChange={(event) => this.inputChanged(event)} />
+          <button>Shorten Me!</button>
+        </form>
+      </div>
     )
   }
 }
