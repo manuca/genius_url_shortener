@@ -11,3 +11,5 @@ since this is my first project on Rails 6.
   * Use a more elegant state handling library like Redux
   * Add proper specs for the features
   * Put stats inside an authenticated environment
+  * Use smarter input handling so that user specifies http or
+    https only if he wants to be specific

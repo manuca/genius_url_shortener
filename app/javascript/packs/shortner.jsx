@@ -25,8 +25,13 @@ const Form = ({onSubmit, url, onChange, errors}) => {
 
 class Shortner extends React.Component {
   constructor(props) {
+    const host = props.host || ""
+    const protocol = props.protocol || ""
     super(props)
-    this.state = { url: "", shortcode: "", errors: {} }
+
+    this.state = {
+      url: "", shortcode: "", errors: {}, host: host, protocol: protocol
+    }
   }
 
   postUrl() {
@@ -59,7 +64,8 @@ class Shortner extends React.Component {
 
   mainComponent() {
     if(!!this.state.shortcode) {
-      const short_url = `http://localhost:3000/${this.state.shortcode}`
+      const short_url = `${this.state.protocol}//${this.state.host}/${this.state.shortcode}`
+
       return (
         <div>
           <h2>Your short URL is:</h2>
@@ -95,7 +101,7 @@ Shortner.propTypes = {
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Shortner />,
+    <Shortner host={window.location.host} protocol={window.location.protocol} />,
     document.body.appendChild(document.createElement('div')),
   )
 })
