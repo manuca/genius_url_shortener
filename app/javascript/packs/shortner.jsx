@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 
-const Errors = (props) => false
+const Errors = ({errors}) => {
+  const error_elements = errors.url.map(error => <li key={error}>{error}</li>)
+  return <ul>{error_elements}</ul>
+}
 
 class Shortner extends React.Component {
   constructor(props) {
@@ -20,7 +23,7 @@ class Shortner extends React.Component {
         this.setState({ shortcode })
       })
       .catch(error => {
-        const { errors } = response
+        const errors = error.response.data.errors
         this.setState({ errors })
       })
   }
@@ -35,7 +38,7 @@ class Shortner extends React.Component {
   }
 
   hasErrors() {
-    return false
+    return !!Object.keys(this.state.errors).length
   }
 
   render() {
