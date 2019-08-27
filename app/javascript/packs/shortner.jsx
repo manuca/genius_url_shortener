@@ -87,7 +87,7 @@ class Shortner extends React.Component {
   render() {
     return (
       <div>
-        <h1>Genius URL Shortener</h1>
+        <h1 className="title">Genius URL Shortener</h1>
         {this.mainComponent()}
       </div>
     )
