@@ -1,0 +1,21 @@
+<h1>URL Visits</h1>
+
+<% @visits.each do |visit| %>
+  <table>
+    <thead>
+      <tr>
+        <th>URL</th>
+        <th>IP</th>
+        <th>When</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= visit.url.url %></td>
+        <td><%= visit.ip %></td>
+        <td><%= visit.created_at %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
