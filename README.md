@@ -1,5 +1,9 @@
 # README
 
+Visit: https://genius-shortener.herokuapp.com/
+
+![Screenshot](https://raw.githubusercontent.com/manuca/genius-shortener/master/screenshot_1.png)
+
 ## Pending stuff
 
 * [ ] Apply styles
