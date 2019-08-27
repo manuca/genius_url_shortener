@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_24_183203) do
+ActiveRecord::Schema.define(version: 2019_08_27_140635) do
 
   create_table "urls", force: :cascade do |t|
     t.string "url", null: false
@@ -19,4 +19,13 @@ ActiveRecord::Schema.define(version: 2019_08_24_183203) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "visits", force: :cascade do |t|
+    t.integer "url_id", null: false
+    t.string "ip", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["url_id"], name: "index_visits_on_url_id"
+  end
+
+  add_foreign_key "visits", "urls"
 end

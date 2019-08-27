@@ -3,7 +3,6 @@
 ## Pending stuff
 
 [ ] Apply styles
-[ ] Count redirection events through a Visit model
 
 ## What went well?
 
