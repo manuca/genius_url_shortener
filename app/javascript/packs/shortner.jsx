@@ -89,7 +89,7 @@ class Shortner extends React.Component {
 
   render() {
     return (
-      <div className="m-auto my-64 w-1/3">
+      <div className="m-auto my-64 w-full text-center">
         {this.mainComponent()}
       </div>
     )
