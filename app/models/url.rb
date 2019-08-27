@@ -1,4 +1,7 @@
 class Url < ApplicationRecord
+  # Associations
+  has_many :visits
+
   # Callbacks
   before_create :assign_shortcode
 
