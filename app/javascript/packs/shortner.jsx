@@ -6,7 +6,7 @@ const Errors = ({errors}) => {
   if (!!Object.keys(errors).length) {
     const error_elements = errors.url.map(error => <li key={error}>{error}</li>)
 
-    return (<div> <ul>{error_elements}</ul></div>)
+    return (<div class="m-2 text-xs uppercase"><ul className="mb-2 text-red-900">{error_elements}</ul></div>)
   } else {
     return null
   }
@@ -14,11 +14,14 @@ const Errors = ({errors}) => {
 
 const Form = ({onSubmit, url, onChange, errors}) => {
   return (
-    <form onSubmit={onSubmit}>
-      <input value={url} placeholder="https://foo.example.com" onChange={onChange} />
-      <button>Shorten Me!</button>
+    <div>
+      <h1 className="font-bold text-xl mb-2">Genius URL Shortener</h1>
+      <form onSubmit={onSubmit} className="inline-flex">
+        <input className="shadow-md bg-white p-4 mr-2" value={url} placeholder="https://foo.example.com" onChange={onChange} />
+        <button className="block uppercase mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10">Shorten Me!</button>
+      </form>
       <Errors errors={errors} />
-    </form>
+    </div>
   )
 }
 
@@ -67,9 +70,9 @@ class Shortner extends React.Component {
 
       return (
         <div>
-          <h2>Your short URL is:</h2>
+          <h1 className="font-bold text-xl mb-2">Your short URL is:</h1>
           <p>
-            <a href={ short_url } target="_blank">{ short_url }</a>
+            <a className="text-2xl" href={ short_url } target="_blank">{ short_url }</a>
           </p>
         </div>
       )
@@ -86,8 +89,7 @@ class Shortner extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1 className="title">Genius URL Shortener</h1>
+      <div className="m-auto my-64 w-1/3">
         {this.mainComponent()}
       </div>
     )
