@@ -13,7 +13,7 @@
     <tbody>
       <% @visits.each do |visit| %>
         <tr>
-          <td class="p-2 text-center"><%= visit.url.url %></td>
+          <td class="p-2 text-center"><%= link_to visit.url.url, visit.url.url %></td>
           <td class="p-2 text-center"><%= visit.ip %></td>
           <td class="p-2 text-center"><%= I18n.l(visit.created_at) %></td>
         </tr>
