@@ -4,6 +4,10 @@ Visit: https://genius-shortener.herokuapp.com/
 
 ![Screenshot](https://raw.githubusercontent.com/manuca/genius_url_shortener/master/screenshot_1.png)
 
+To follow redirection stats check:
+
+[https://genius-shortener.herokuapp.com/visits](https://genius-shortener.herokuapp.com/visits)
+
 ## What went well?
 
 The app was developed in time.
