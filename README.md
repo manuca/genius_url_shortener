@@ -8,27 +8,14 @@ To follow redirection stats check:
 
 [https://genius-shortener.herokuapp.com/visits](https://genius-shortener.herokuapp.com/visits)
 
-## What went well?
+## App goals:
 
-The app was developed in time.
-
-## What didn't go well?
-
-* Not much but I had to deal with some very small deprecation errors in Rails since this
-  is my first project on Rails 6.
-
-## If you had more time to work on this,
-  * Use a more elegant state handling library like Redux (although maybe
-    overkill, not 100% sure)
-  * Add proper specs for the features implemented
-  * Put stats inside an authenticated environment
-  * Use smarter input handling so that user specifies http or
-    https only if he wants to be specific
-  * Pagination, we'll need pagination to display all those visits (Pagy,
-    Haminari, etc)
-
-Optional features
-
-* [ ] Geo tracking
-* [ ] Stats by redirections (we're already storing the data for this)
-* [ ] Do some benchmarks to measure performance
+* For each shortened url, it should store a counter for the number of
+  redirections and for each visit and it should store the IP address. It should
+  perform well and not have any timeouts or slow requests
+* Optional Generate statistics by countries based off of IPs. E.g. 10% users
+  are from France, other 90% from India.
+* Optional Generate all statistics by by total redirections and unique
+  redirections
+* Optional It should be able to handle a heavy load of traffic at 10,000,000
+  users per day
