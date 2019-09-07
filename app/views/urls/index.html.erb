@@ -4,6 +4,7 @@
   <table class="w-full">
     <thead>
       <tr class="border-b-2 border-indigo-800">
+        <th class="pb-2">Shortcode</th>
         <th class="pb-2">URL</th>
         <th class="pb-2">Visits</th>
       </tr>
@@ -12,6 +13,7 @@
     <tbody>
       <% @urls.each do |url| %>
         <tr>
+          <td class="p-2 text-center"><%= link_to url.shortcode, redirects_path(url.shortcode) %></td>
           <td class="p-2 text-center"><%= link_to url.url, url.url %></td>
           <td class="p-2 text-center"><%= url.visits_count %></td>
         </tr>
