@@ -1,4 +1,6 @@
 class Url < ApplicationRecord
+  SHORTCODE_LENGTH = 7
+
   # Associations
   has_many :visits
 
@@ -25,6 +27,6 @@ class Url < ApplicationRecord
   end
 
   def assign_shortcode
-    self.shortcode = SecureRandom.base36(5)
+    self.shortcode = SecureRandom.base36(SHORTCODE_LENGTH)
   end
 end
