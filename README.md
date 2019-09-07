@@ -11,7 +11,7 @@ To follow redirection stats check:
 ## App goals:
 
 * For each shortened url, it should store a counter for the number of
-  redirections and for each visit and it should store the IP address. It should
+  redirections and for each visit it should store the IP address. It should
   perform well and not have any timeouts or slow requests
 * *Optional* Generate statistics by countries based off of IPs. E.g. 10% users
   are from France, other 90% from India.
