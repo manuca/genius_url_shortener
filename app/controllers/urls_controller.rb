@@ -6,7 +6,7 @@ class UrlsController < ApplicationController
   end
 
   def create
-    url = Url.find_or_create_by(url_params)
+    url = Url.generate!(url_params)
 
     if url.save
       render json: { shortcode: url.shortcode }, status: :created
