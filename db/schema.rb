@@ -12,15 +12,20 @@
 
 ActiveRecord::Schema.define(version: 2019_08_27_140635) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "urls", force: :cascade do |t|
     t.string "url", null: false
     t.string "shortcode", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["shortcode"], name: "index_urls_on_shortcode", unique: true
+    t.index ["url"], name: "index_urls_on_url", unique: true
   end
 
   create_table "visits", force: :cascade do |t|
-    t.integer "url_id", null: false
+    t.bigint "url_id", null: false
     t.string "ip", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
