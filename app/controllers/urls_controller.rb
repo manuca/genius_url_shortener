@@ -1,6 +1,10 @@
 class UrlsController < ApplicationController
   protect_from_forgery except: :create
 
+  def index
+    @urls = Url.all
+  end
+
   def new
     @url = Url.new
   end
